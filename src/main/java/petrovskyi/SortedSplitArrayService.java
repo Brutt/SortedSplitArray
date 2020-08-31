@@ -2,7 +2,16 @@ package petrovskyi;
 
 public class SortedSplitArrayService {
     public int findElem(int[] arr, int value) {
-        return 0;
+        int edge = findEdge(arr, 0, arr.length);
+
+        if (arr[edge] == value) {
+            return edge;
+        }
+        if (arr[0] <= value) {
+            return binarySearch(arr, 0, edge, value);
+        }
+
+        return binarySearch(arr, edge + 1, arr.length, value);
     }
 
     int findEdge(int arr[], int startIndex, int finishIndex) {
