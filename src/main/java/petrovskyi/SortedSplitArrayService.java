@@ -23,4 +23,20 @@ public class SortedSplitArrayService {
 
         return findEdge(arr, middle + 1, finishIndex);
     }
+
+    int binarySearch(int arr[], int startIndex, int finishIndex, int value) {
+        if (finishIndex < startIndex) {
+            return -1;
+        }
+
+        int middle = (startIndex + finishIndex) / 2;
+        if (value == arr[middle]) {
+            return middle;
+        }
+        if (value > arr[middle]) {
+            return binarySearch(arr, (middle + 1), finishIndex, value);
+        }
+
+        return binarySearch(arr, startIndex, (middle - 1), value);
+    }
 }

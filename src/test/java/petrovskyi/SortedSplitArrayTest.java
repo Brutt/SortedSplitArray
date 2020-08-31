@@ -32,4 +32,22 @@ public class SortedSplitArrayTest {
 
         assertEquals(2, index); //number 7 has 1st index
     }
+
+    @Test
+    @DisplayName("Should find an element in sorted array using binary search and return index")
+    public void searchElementWithBinarySearch() {
+        int[] arr = new int[]{1, 2, 3, 4, 8, 9, 10, 20, 100, 188};
+
+        SortedSplitArrayService service = new SortedSplitArrayService();
+
+        int startIndex = 0;
+        int finishIndex = arr.length-1;
+        int index = service.binarySearch(arr, startIndex, finishIndex, 20);
+
+        assertEquals(7, index); //number 20 has 7th index
+
+        index = service.binarySearch(arr, startIndex, finishIndex, 99);
+
+        assertEquals(-1, index); //number 99 is not in the array
+    }
 }
